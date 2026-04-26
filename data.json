@@ -1,0 +1,51 @@
+[
+  {
+    "rider_name": "RITA RODRIGUES",
+    "horse_name": "NANA",
+    "clabb_no": "INF2",
+    "est_time": "10:00",
+    "horse_custom_fields": { "box": "265" }
+  },
+  {
+    "rider_name": "JOSE COSTA",
+    "horse_name": "POMPOM",
+    "clabb_no": "INIC2",
+    "est_time": "10:20",
+    "horse_custom_fields": { "box": "135" }
+  },
+  {
+    "rider_name": "NELIA COSTA",
+    "horse_name": "POMPOM",
+    "clabb_no": "INIC2",
+    "est_time": "10:29",
+    "horse_custom_fields": { "box": "135" }
+  },
+  {
+    "rider_name": "ROSA RODRIGUES",
+    "horse_name": "NANA",
+    "clabb_no": "INIC2",
+    "est_time": "10:38",
+    "horse_custom_fields": { "box": "265" }
+  },
+  {
+    "rider_name": "FRANCISCO COSTA",
+    "horse_name": "PINOQUIO",
+    "clabb_no": "JUV2",
+    "est_time": "11:00",
+    "horse_custom_fields": { "box": "156" }
+  },
+  {
+    "rider_name": "GILBERTO RODRIGUES",
+    "horse_name": "FAISCA",
+    "clabb_no": "JUV2",
+    "est_time": "11:09",
+    "horse_custom_fields": { "box": "231" }
+  },
+  {
+    "rider_name": "AFONSO COSTA",
+    "horse_name": "FAISCA",
+    "clabb_no": "JUV2",
+    "est_time": "11:18",
+    "horse_custom_fields": {}
+  }
+]
