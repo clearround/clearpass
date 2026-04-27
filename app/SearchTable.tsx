@@ -5,8 +5,14 @@ import { lang, translations } from "./i18n";
 
 const t = translations[lang];
 
-export default function SearchTable({ data }: { data: any[] }) {
-  const [search, setSearch] = useState("");
+type AccreditationRow = {
+  id: number;
+  name: string;
+  category: string;
+  zones: string[];
+};
+
+export default function SearchTable({ data }: { data: AccreditationRow[] }) {  const [search, setSearch] = useState("");
 
   const filtered = data.filter((item) => {
     const text = search.toLowerCase();

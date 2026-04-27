@@ -7,7 +7,7 @@ async function createAccreditation(formData: FormData) {
 
   const eventId = Number(formData.get("eventId"));
   const name = String(formData.get("name"));
-  const category = String(formData.get("category")) as any;
+const category = String(formData.get("category"));
   const zones = formData.getAll("zones").map(String);
 
   const person = await prisma.person.create({
