@@ -1,3 +1,4 @@
+import { Category } from "@prisma/client";
 import { prisma } from "../../lib/prisma";
 import { revalidatePath } from "next/cache";
 
@@ -8,7 +9,7 @@ async function createAccreditation(formData: FormData) {
 
   const eventId = Number(formData.get("eventId"));
   const name = String(formData.get("name"));
-  const category = String(formData.get("category"));
+  const category = String(formData.get("category")) as Category;
   const zones = formData.getAll("zones").map(String);
 
   const person = await prisma.person.create({
