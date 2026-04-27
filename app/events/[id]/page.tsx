@@ -1,5 +1,6 @@
 import { prisma } from "../../lib/prisma";
 import { revalidatePath } from "next/cache";
+
 const ACCESS_ZONES = ["VIP", "STABLES", "ARENA", "SHOW OFFICE", "RESTAURANT", "PRESS", "PARKING"];
 
 async function createAccreditation(formData: FormData) {
@@ -7,7 +8,7 @@ async function createAccreditation(formData: FormData) {
 
   const eventId = Number(formData.get("eventId"));
   const name = String(formData.get("name"));
-const category = String(formData.get("category"));
+  const category = String(formData.get("category"));
   const zones = formData.getAll("zones").map(String);
 
   const person = await prisma.person.create({
@@ -21,8 +22,13 @@ const category = String(formData.get("category"));
   revalidatePath(`/events/${eventId}`);
 }
 
-export default async function EventPage({ params }: { params: { id: string } }) {
-  const eventId = Number(params.id);
+export default async function EventPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const eventId = Number(id);
 
   const event = await prisma.event.findUnique({
     where: { id: eventId },
@@ -77,7 +83,9 @@ export default async function EventPage({ params }: { params: { id: string } }) 
             </div>
           </div>
 
-          <button type="submit" style={buttonStyle}>Create Accreditation</button>
+          <button type="submit" style={buttonStyle}>
+            Create Accreditation
+          </button>
         </form>
       </section>
 
@@ -92,6 +100,7 @@ export default async function EventPage({ params }: { params: { id: string } }) 
               <th style={cellStyle}>Access Zones</th>
             </tr>
           </thead>
+
           <tbody>
             {people.map((p) => (
               <tr key={p.id} style={{ borderBottom: "1px solid #eee" }}>
@@ -116,7 +125,33 @@ function Card({ title, value }: { title: string; value: number }) {
   );
 }
 
-const inputStyle = { padding: 12, borderRadius: 10, border: "1px solid #ddd", minWidth: 220, fontSize: 15 };
-const checkboxStyle = { padding: "10px 14px", border: "1px solid #ddd", borderRadius: 999, background: "#fafafa", cursor: "pointer" };
-const buttonStyle = { padding: "14px 22px", borderRadius: 10, border: "none", background: "#111", color: "white", fontSize: 15, cursor: "pointer", width: "fit-content" };
-const cellStyle = { padding: 12 };
+const inputStyle = {
+  padding: 12,
+  borderRadius: 10,
+  border: "1px solid #ddd",
+  minWidth: 220,
+  fontSize: 15,
+};
+
+const checkboxStyle = {
+  padding: "10px 14px",
+  border: "1px solid #ddd",
+  borderRadius: 999,
+  background: "#fafafa",
+  cursor: "pointer",
+};
+
+const buttonStyle = {
+  padding: "14px 22px",
+  borderRadius: 10,
+  border: "none",
+  background: "#111",
+  color: "white",
+  fontSize: 15,
+  cursor: "pointer",
+  width: "fit-content",
+};
+
+const cellStyle = {
+  padding: 12,
+};
